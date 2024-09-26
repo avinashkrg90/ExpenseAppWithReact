@@ -2,14 +2,15 @@
 import { useState } from "react";
 import styles from "./ExpenseForm.module.css";
 
-export default function ExpenseForm({expenses, setExpenses}) {
+export default function ExpenseForm({expenses, dispatch}) {
   // Create state or ref for the inputs here
   const [textContent, setTextContent] = useState();
   const [amountContent, setAmountContent] = useState();
 
   function handleSubmit(e){
       e.preventDefault();
-      setExpenses([...expenses, {text: textContent, amount: parseFloat(amountContent)}])
+      // setExpenses([...expenses, {text: textContent, amount: parseFloat(amountContent)}])
+      dispatch({type: "ADD", expense:{text: textContent, amount: parseFloat(amountContent)}})
   }
 
     return (

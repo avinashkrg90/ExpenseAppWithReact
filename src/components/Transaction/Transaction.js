@@ -3,11 +3,12 @@ import styles from "./Transaction.module.css";
 import EditImage from "../../images/edit.png";
 import DeleteImage from "../../images/trash-bin.png";
 
-export default function Transaction({ expense, index, expenses, setExpenses}) {
+export default function Transaction({ expense, index, expenses, dispatch}) {
   const [currentHoverIndex, setCurrentHoverIndex] = useState(null);
 
   function deleteTransaction(index) {
-    setExpenses(expenses.filter((expense, i) => i !== index))
+    // setExpenses(expenses.filter((expense, i) => i !== index))
+    dispatch({type: "DELETE", index: index})
   }
 
   return (
